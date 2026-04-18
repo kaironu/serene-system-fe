@@ -1,26 +1,184 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Background & Neutral */
+  --bg-primary: #faf9f7;
+  --bg-secondary: #f3f1ed;
+  --bg-tertiary: #ede9e3;
+
+  /* Text */
+  --text-primary: #1a1a1a;
+  --text-secondary: #4a4a4a;
+  --text-tertiary: #7a7a7a;
+  --text-light: #b0b0b0;
+
+  /* Accents - Vietnamese Heritage */
+  --accent-gold: #d4af37;
+  --accent-brick: #a23b3b;
+  --accent-jade: #4a7c6a;
+  --accent-black: #0a0a0a;
+
+  /* Semantic */
+  --border: #e0dbd3;
+  --success: #2d6a4f;
+  --warning: #c9812d;
+  --error: #d62828;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+  --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.12);
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
+  --color-background: var(--bg-primary);
+  --color-foreground: var(--text-primary);
+  --font-sans: var(--font-inter);
   --font-mono: var(--font-geist-mono);
+  --font-serif: var(--font-playfair);
+
+  /* Tailwind color overrides */
+  --color-slate-50: var(--bg-primary);
+  --color-slate-100: var(--bg-secondary);
+  --color-amber-400: var(--accent-gold);
+  --color-red-600: var(--accent-brick);
+  --color-teal-700: var(--accent-jade);
+}
+
+/* Typography System */
+@layer base {
+  * {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply bg-[var(--bg-primary)] text-[var(--text-primary)] font-sans;
+  }
+
+  /* Heading Styles */
+  h1 {
+    @apply font-serif text-5xl md:text-6xl lg:text-7xl font-normal tracking-tight leading-tight;
+  }
+
+  h2 {
+    @apply font-serif text-4xl md:text-5xl font-normal tracking-tight;
+  }
+
+  h3 {
+    @apply font-serif text-3xl md:text-4xl font-normal;
+  }
+
+  h4 {
+    @apply font-serif text-2xl md:text-3xl font-normal;
+  }
+
+  h5 {
+    @apply font-serif text-xl md:text-2xl font-normal;
+  }
+
+  h6 {
+    @apply font-sans text-lg font-semibold uppercase tracking-wide;
+  }
+
+  /* Paragraph Styles */
+  p {
+    @apply text-base leading-relaxed text-[var(--text-secondary)];
+  }
+
+  /* Links */
+  a {
+    @apply transition-colors duration-300 hover:text-[var(--accent-brick)];
+  }
+
+  /* Lists */
+  ul, ol {
+    @apply space-y-2;
+  }
+
+  li {
+    @apply text-[var(--text-secondary)];
+  }
+}
+
+/* Animations */
+@layer utilities {
+  /* Fade in on scroll */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes slideInLeft {
+    from {
+      opacity: 0;
+      transform: translateX(-30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  /* Silk-like hover effect */
+  @keyframes silkHover {
+    0% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-2px);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fadeInUp {
+    animation: fadeInUp 0.8s ease-out;
+  }
+
+  .animate-fadeIn {
+    animation: fadeIn 0.6s ease-out;
+  }
+
+  .animate-slideInLeft {
+    animation: slideInLeft 0.8s ease-out;
+  }
+
+  .transition-silk {
+    @apply transition-all duration-500 ease-out;
+  }
+
+  /* Subtle hover lift */
+  .hover-lift {
+    @apply transition-all duration-300 hover:shadow-lg hover:translate-y-[-4px];
+  }
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --bg-primary: #0f0f0e;
+    --bg-secondary: #1a1a19;
+    --bg-tertiary: #252523;
+    --text-primary: #f5f5f3;
+    --text-secondary: #d0d0ce;
+    --text-tertiary: #a8a8a4;
+    --text-light: #7a7a78;
+    --border: #3a3a38;
   }
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
 }
