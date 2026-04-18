@@ -3,11 +3,12 @@
 import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
 
-interface SectionProps extends React.HTMLAttributes<HTMLElement> {
+interface SectionProps {
   children: React.ReactNode;
   title?: string;
   subtitle?: string;
   fullWidth?: boolean;
+  className?: string;
 }
 
 export default function Section({
@@ -16,7 +17,6 @@ export default function Section({
   subtitle,
   fullWidth = false,
   className,
-  ...props
 }: SectionProps) {
   return (
     <motion.section
@@ -29,7 +29,6 @@ export default function Section({
       whileInView={{ opacity: 1 }}
       transition={{ duration: 0.6 }}
       viewport={{ once: true }}
-      {...props}
     >
       {(title || subtitle) && (
         <motion.div
