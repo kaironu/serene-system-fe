@@ -88,7 +88,7 @@
 
   /* Links */
   a {
-    @apply transition-colors duration-300 hover:text-[var(--accent-brick)];
+    @apply transition-colors duration-300 hover:text-[var(--accent-jade)];
   }
 
   /* Lists */

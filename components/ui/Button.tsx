@@ -17,7 +17,7 @@ const buttonVariants = cva(
         ghost:
           'text-text-primary hover:bg-secondary',
         accent:
-          'bg-accent-brick text-white hover:shadow-lg hover:scale-105',
+          'bg-accent-jade text-white hover:shadow-lg hover:scale-105',
         subtle:
           'text-text-secondary hover:text-text-primary',
       },

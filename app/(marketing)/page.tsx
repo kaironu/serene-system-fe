@@ -1,248 +1,246 @@
 'use client';
 
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { motion } from 'framer-motion';
-import Hero from '@/components/layout/Hero';
-import Section from '@/components/layout/Section';
-import { Button } from '@/components/ui/Button';
 import ProductCard from '@/components/product/ProductCard';
+import { products } from '@/lib/catalog';
 
-const mockProducts = [
+const mockProducts = products;
+
+const heroSlides = [
   {
-    id: '1',
-    name: 'Áo dài tơ tằm Đào Loan',
-    slug: 'ao-dai-dao-loan',
-    description: 'Áo dài với thiết kế tỉ mỉ, chất liệu lụa tự nhiên',
-    price: 3850000,
-    originalPrice: 4500000,
-    images: [
-      'https://via.placeholder.com/500x600?text=Áo+dài+Đào+Loan',
-    ],
-    sizes: [
-      { id: '1', label: 'XS', stock: 5 },
-      { id: '2', label: 'S', stock: 10 },
-    ],
-    collections: ['collection-1'],
-    featured: true,
-    rating: 4.8,
-    reviewCount: 156,
+    id: 'sai-anh-1',
+    title: 'sài ảnh',
+    leftImage: 'https://images.unsplash.com/photo-1611486212557-88be5ff6f941?auto=format&fit=crop&w=900&q=80',
+    rightImage: 'https://images.unsplash.com/photo-1612423284934-2850a4ea6b0f?auto=format&fit=crop&w=1600&q=80',
   },
   {
-    id: '2',
-    name: 'Đầm tơ cổ yếm Thanh Hoa',
-    slug: 'dam-to-thanh-hoa',
-    description: 'Đầm tơ với cổ yếm truyền thống',
-    price: 2480000,
-    originalPrice: undefined,
-    images: [
-      'https://via.placeholder.com/500x600?text=Đầm+Thanh+Hoa',
-    ],
-    sizes: [],
-    collections: ['collection-1'],
-    featured: true,
-    rating: 4.6,
-    reviewCount: 89,
+    id: 'sai-anh-2',
+    title: 'uyển gia',
+    leftImage: 'https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?auto=format&fit=crop&w=900&q=80',
+    rightImage: 'https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=1600&q=80',
   },
   {
-    id: '3',
-    name: 'Áo gấm Diệu Hoa',
-    slug: 'ao-gam-dieu-hoa',
-    description: 'Áo gấm với họa tiết Diệu Hoa',
-    price: 1990000,
-    originalPrice: 2400000,
-    images: [
-      'https://via.placeholder.com/500x600?text=Áo+gấm+Diệu+Hoa',
-    ],
-    sizes: [],
-    collections: ['collection-2'],
-    featured: true,
-    rating: 4.7,
-    reviewCount: 124,
-  },
-  {
-    id: '4',
-    name: 'Áo tơ Hoa Cầm',
-    slug: 'ao-to-hoa-cam',
-    description: 'Áo tơ tinh tế với hoa cầm',
-    price: 1290000,
-    originalPrice: undefined,
-    images: [
-      'https://via.placeholder.com/500x600?text=Áo+tơ+Hoa+Cầm',
-    ],
-    sizes: [],
-    collections: ['collection-2'],
-    featured: true,
-    rating: 4.5,
-    reviewCount: 67,
+    id: 'sai-anh-3',
+    title: 'thanh tự',
+    leftImage: 'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=900&q=80',
+    rightImage: 'https://images.unsplash.com/photo-1464863979621-258859e62245?auto=format&fit=crop&w=1600&q=80',
   },
 ];
 
-const StorySection = () => (
-  <Section className="bg-secondary/50" fullWidth>
-    <div className="max-w-7xl mx-auto px-4 grid md:grid-cols-2 gap-16 items-center">
-      <motion.div
-        initial={{ opacity: 0, x: -40 }}
-        whileInView={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.8 }}
-        viewport={{ once: true }}
-      >
-        <p className="font-sans text-sm uppercase tracking-widest text-accent-brick mb-6">
-          Câu chuyện của chúng tôi
-        </p>
-        <h2 className="font-serif text-5xl md:text-6xl text-text-primary mb-6 leading-tight">
-          Nét đẹp truyền thống, tinh thần hiện đại
-        </h2>
-        <p className="font-sans text-lg text-text-secondary leading-relaxed mb-8">
-          Mỗi chiếc áo dài Serene System là kết quả của sự chăm chút tinh tế, kỹ thuật may đo tỉ mỉ kết hợp với những thiết kế hiện đại. Chúng tôi tin rằng áo dài không chỉ là trang phục mà còn là biểu tượng của vẻ đẹp nền nã, thanh lịch của người phụ nữ Việt.
-        </p>
-        <p className="font-sans text-lg text-text-secondary leading-relaxed mb-12">
-          Với từng bộ sưu tập, chúng tôi mang câu chuyện Việt - những câu chuyện về quê hương, về ký ức, về những khoảnh khắc thanh tịnh.
-        </p>
-        <Link href="/about">
-          <Button variant="primary" size="lg">
-            Tìm hiểu thêm
-          </Button>
-        </Link>
-      </motion.div>
+const editorialSections = [
+  {
+    id: 'sai-anh',
+    title: 'SÀI ẢNH',
+    description:
+      'Xuân ghé thềm, phố thị chậm lại trong những ngày đầu năm. Bàng Trang đặt vào Sài Ảnh tinh thần nhẹ, sâu và thanh tân của người phụ nữ Á Đông qua từng đường may thủ công.',
+    image: 'https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=1600&q=80',
+    collectionKey: 'collection-1',
+  },
+  {
+    id: 'uyen-gia',
+    title: 'UYỂN GIA',
+    description:
+      'Uyển Gia là bảng màu trầm ấm và những phom dáng mềm, giữ trọn vẻ nền nã nhưng vẫn đủ hiện đại cho nhịp sống hôm nay. Mỗi thiết kế hướng đến cảm giác thư thái và tinh tế.',
+    image: 'https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?auto=format&fit=crop&w=1600&q=80',
+    collectionKey: 'collection-3',
+  },
+  {
+    id: 'thanh-tu',
+    title: 'THANH TỰ',
+    description:
+      'Thanh Tự được phát triển cho những khoảnh khắc chậm lại, nơi vẻ đẹp được thể hiện bằng chất liệu và tỉ lệ chuẩn mực. Từ chất gấm đến chi tiết đính kết đều hướng về sự cân bằng.',
+    image: 'https://images.unsplash.com/photo-1464863979621-258859e62245?auto=format&fit=crop&w=1600&q=80',
+    collectionKey: 'collection-4',
+  },
+];
 
-      <motion.div
-        className="relative h-96 md:h-full rounded-lg overflow-hidden"
-        initial={{ opacity: 0, x: 40 }}
-        whileInView={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.8 }}
-        viewport={{ once: true }}
-      >
-        <Image
-          src="https://via.placeholder.com/600x800?text=Serene+Story"
-          alt="Serene System Story"
-          fill
-          className="object-cover hover:scale-105 transition-transform duration-700"
-        />
-      </motion.div>
-    </div>
-  </Section>
-);
+const HeroSplit = () => {
+  const [activeSlide, setActiveSlide] = useState(0);
 
-const CollectionShowcase = () => (
-  <Section title="Bộ sưu tập nổi bật" subtitle="Các bộ sưu tập mới nhất" fullWidth>
-    <div className="max-w-7xl mx-auto px-4">
-      <div className="grid md:grid-cols-3 gap-8">
-        {[
-          {
-            id: '1',
-            name: 'Sài Ảnh',
-            description: 'Khám phá vẻ đẹp của Sài Gòn hộp mộng',
-            image: 'https://via.placeholder.com/600x400?text=Sài+Ảnh',
-          },
-          {
-            id: '2',
-            name: 'Uyển Gia',
-            description: 'Từ những khoảnh khắc yên tĩnh',
-            image: 'https://via.placeholder.com/600x400?text=Uyển+Gia',
-          },
-          {
-            id: '3',
-            name: 'Thanh Tự',
-            description: 'Tinh tế trong từng chi tiết',
-            image: 'https://via.placeholder.com/600x400?text=Thanh+Tự',
-          },
-        ].map((collection, i) => (
-          <motion.div
-            key={collection.id}
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: i * 0.1 }}
-            viewport={{ once: true }}
-          >
-            <Link href={`/collections/${collection.id}`}>
-              <div className="group cursor-pointer">
-                <div className="relative h-96 rounded-lg overflow-hidden mb-6 hover-lift">
-                  <Image
-                    src={collection.image}
-                    alt={collection.name}
-                    fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-700"
-                  />
-                </div>
-                <h3 className="font-serif text-2xl text-text-primary mb-3">
-                  {collection.name}
-                </h3>
-                <p className="font-sans text-text-secondary mb-4">
-                  {collection.description}
-                </p>
-                <span className="text-accent-brick font-semibold flex items-center gap-2 group-hover:gap-3 transition-all">
-                  Xem bộ sưu tập →
-                </span>
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setActiveSlide((prev) => (prev + 1) % heroSlides.length);
+    }, 4500);
+
+    return () => clearInterval(timer);
+  }, []);
+
+  const handleSlideChange = (nextIndex: number) => {
+    const total = heroSlides.length;
+    setActiveSlide((nextIndex + total) % total);
+  };
+
+  return (
+    <section className="bg-white">
+      <div className="w-full">
+        <div className="relative grid grid-cols-12 h-140 md:h-155">
+          <div className="relative col-span-5 md:col-span-4 overflow-hidden">
+            {heroSlides.map((slide, index) => (
+              <div
+                key={`${slide.id}-left`}
+                className={`absolute inset-0 transition-opacity duration-700 ${index === activeSlide ? 'opacity-100' : 'opacity-0'}`}
+              >
+                <Image
+                  src={slide.leftImage}
+                  alt={`Bàng Trang ${slide.title} trái`}
+                  fill
+                  sizes="(max-width: 768px) 42vw, 33vw"
+                  loading="eager"
+                  className="object-cover"
+                />
               </div>
-            </Link>
-          </motion.div>
-        ))}
-      </div>
-    </div>
-  </Section>
-);
+            ))}
+          </div>
 
-const FeaturedProducts = () => (
-  <Section title="Sản phẩm nổi bật" subtitle="Những thiết kế được yêu thích" fullWidth>
-    <div className="max-w-7xl mx-auto px-4">
-      <div className="grid md:grid-cols-4 gap-8">
-        {mockProducts.map((product) => (
+          <div className="relative col-span-7 md:col-span-8 overflow-hidden">
+            {heroSlides.map((slide, index) => (
+              <div
+                key={`${slide.id}-right`}
+                className={`absolute inset-0 transition-opacity duration-700 ${index === activeSlide ? 'opacity-100' : 'opacity-0'}`}
+              >
+                <Image
+                  src={slide.rightImage}
+                  alt={`Bàng Trang ${slide.title} phải`}
+                  fill
+                  sizes="(max-width: 768px) 58vw, 67vw"
+                  loading="eager"
+                  className="object-cover"
+                />
+              </div>
+            ))}
+
+            <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+              <span className="font-serif text-5xl md:text-6xl text-[#2f4f58]/80 lowercase">
+                {heroSlides[activeSlide].title}
+              </span>
+            </div>
+
+            <div className="absolute bottom-5 right-6 flex items-center gap-3 z-10">
+              <button
+                type="button"
+                onClick={() => handleSlideChange(activeSlide - 1)}
+                className="w-8 h-8 rounded-full border border-white/80 text-white bg-black/20 hover:bg-black/35"
+                aria-label="Slide trước"
+              >
+                ‹
+              </button>
+
+              <div className="flex items-center gap-2">
+                {heroSlides.map((slide, index) => (
+                  <button
+                    key={`${slide.id}-dot`}
+                    type="button"
+                    onClick={() => handleSlideChange(index)}
+                    className={`h-2.5 rounded-full transition-all ${index === activeSlide ? 'w-8 bg-white' : 'w-2.5 bg-white/60'}`}
+                    aria-label={`Chuyển tới slide ${index + 1}`}
+                  />
+                ))}
+              </div>
+
+              <button
+                type="button"
+                onClick={() => handleSlideChange(activeSlide + 1)}
+                className="w-8 h-8 rounded-full border border-white/80 text-white bg-black/20 hover:bg-black/35"
+                aria-label="Slide tiếp theo"
+              >
+                ›
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const ProductHighlights = () => (
+  <section id="san-pham-moi" className="bg-[#efefef] py-16">
+    <div className="w-full px-8 md:px-10">
+      <div className="flex items-center justify-between gap-4 mb-10">
+        <h2 className="font-serif text-5xl text-[#4f744f] uppercase">Sản phẩm mới</h2>
+        <Link href="/products" className="text-sm uppercase tracking-[0.14em] text-[#4f744f] hover:opacity-80">
+          Xem tất cả
+        </Link>
+      </div>
+
+      <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-7">
+        {mockProducts.slice(0, 8).map((product) => (
           <ProductCard key={product.id} product={product} />
         ))}
       </div>
     </div>
-  </Section>
+  </section>
 );
 
-const ContactSection = () => (
-  <Section className="bg-gradient-to-br from-accent-black to-accent-jade text-white" fullWidth>
-    <div className="max-w-4xl mx-auto px-4 text-center">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        viewport={{ once: true }}
-      >
-        <h2 className="font-serif text-5xl md:text-6xl mb-6">
-          Hãy liên hệ với chúng tôi
-        </h2>
-        <p className="font-sans text-lg mb-12 text-white/80">
-          Bạn có câu hỏi hoặc muốn tìm hiểu thêm về các sản phẩm của Serene System? Chúng tôi luôn sẵn sàng giúp bạn.
-        </p>
-        <div className="flex gap-4 justify-center flex-wrap">
-          <a href="tel:0962731333">
-            <Button variant="primary" size="lg" className="bg-white text-accent-black hover:bg-opacity-90">
-              Gọi ngay: 096 273 13 33
-            </Button>
-          </a>
-          <a href="mailto:support@serene-system.com">
-            <Button variant="outline" size="lg" className="border-white text-white hover:bg-white/10">
-              Gửi email
-            </Button>
-          </a>
+const EditorialSection = ({
+  section,
+  reverse,
+}: {
+  section: (typeof editorialSections)[number];
+  reverse?: boolean;
+}) => {
+  const relatedProducts = mockProducts
+    .filter((product) => product.collections.includes(section.collectionKey))
+    .slice(0, 3);
+
+  return (
+    <section id={section.id} className={`${reverse ? 'bg-[#f7f6ef]' : 'bg-white'} py-16 md:py-20`}>
+      <div className="w-full px-8 md:px-10">
+        <div className={`grid md:grid-cols-2 gap-10 md:gap-14 items-center ${reverse ? 'md:[&>*:first-child]:order-2' : ''}`}>
+          <div className="relative h-105 md:h-155 overflow-hidden">
+            <Image
+              src={section.image}
+              alt={section.title}
+              fill
+              sizes="(max-width: 768px) 100vw, 50vw"
+              className="object-cover"
+            />
+          </div>
+
+          <div>
+            <p className="text-sm uppercase tracking-[0.2em] text-[#6d735f] mb-4">Bộ sưu tập</p>
+            <h3 className="font-serif text-5xl md:text-6xl text-[#4f744f] mb-6">{section.title}</h3>
+            <p className="text-lg leading-relaxed text-[#5d5d55] mb-10 max-w-160">{section.description}</p>
+
+            <div className="flex items-center flex-wrap gap-8 text-sm uppercase tracking-[0.14em] text-[#4f744f]">
+              <Link href="/collections" className="hover:opacity-80">Xem thêm</Link>
+              <Link href="/collections" className="hover:opacity-80">{section.title}</Link>
+            </div>
+
+            {relatedProducts.length > 0 && (
+              <div className="mt-10 border-t border-[#d9d6bf] pt-6 flex flex-wrap gap-5">
+                {relatedProducts.map((product) => (
+                  <Link
+                    key={`${section.id}-${product.id}`}
+                    href={`/products/${product.slug}`}
+                    className="text-sm text-[#6d735f] hover:text-[#3f6243]"
+                  >
+                    {product.name}
+                  </Link>
+                ))}
+              </div>
+            )}
+          </div>
         </div>
-      </motion.div>
-    </div>
-  </Section>
-);
+      </div>
+    </section>
+  );
+};
 
 export default function Homepage() {
   return (
     <div className="space-y-0">
-      <Hero
-        title="Serene System"
-        subtitle="Áo dài - Nét đẹp truyền thống"
-        description="Khám phá bộ sưu tập áo dài sang trọng, được thiết kế với tình yêu và sự chân thành cho những người phụ nữ yêu quý giá trị truyền thống."
-        image="https://via.placeholder.com/1920x1080?text=Serene+System+Hero"
-        cta={{ text: 'Khám phá sản phẩm', href: '/products' }}
-        ctaSecondary={{ text: 'Xem bộ sưu tập', href: '/collections' }}
-      />
-
-      <StorySection />
-      <CollectionShowcase />
-      <FeaturedProducts />
-      <ContactSection />
+      <HeroSplit />
+      <ProductHighlights />
+      {editorialSections.map((section, index) => (
+        <EditorialSection
+          key={section.id}
+          section={section}
+          reverse={index % 2 === 1}
+        />
+      ))}
     </div>
   );
 }

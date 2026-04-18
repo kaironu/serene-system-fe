@@ -52,11 +52,11 @@ export function Search({ placeholder = 'Tìm kiếm sản phẩm...' }: SearchPr
           }}
           onFocus={() => setIsOpen(true)}
           placeholder={placeholder}
-          className="flex-1 px-4 py-3 font-sans text-base border border-neutral-light bg-white text-text-primary placeholder-text-tertiary rounded-l-lg transition-all duration-300 focus:outline-none focus:border-accent-brick focus:ring-1 focus:ring-accent-brick"
+          className="flex-1 px-4 py-3 font-sans text-base border border-neutral-light bg-white text-text-primary placeholder-text-tertiary rounded-l-lg transition-all duration-300 focus:outline-none focus:border-accent-jade focus:ring-1 focus:ring-accent-jade"
         />
         <button
           type="submit"
-          className="bg-accent-brick text-white px-6 py-3 rounded-r-lg font-semibold hover:bg-opacity-90 transition-all duration-300"
+          className="bg-accent-jade text-white px-6 py-3 rounded-r-lg font-semibold hover:bg-opacity-90 transition-all duration-300"
         >
           Tìm kiếm
         </button>

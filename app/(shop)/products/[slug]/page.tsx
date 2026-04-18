@@ -1,91 +1,156 @@
-import AddToCart from '@/components/product/AddToCart';
+import Image from 'next/image';
 
-export default function ProductDetailPage({
+const formatVnd = (value: number) => `${value.toLocaleString('vi-VN')}₫`;
+
+export default async function ProductDetailPage({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }) {
+  const { slug } = await params;
+
   const mockProduct = {
     id: '1',
-    name: 'Áo dài truyền thống',
-    slug: params.slug,
-    description: 'Áo dài với thiết kế tỉ mỉ, chất liệu lụa tự nhiên',
-    price: 299000,
-    originalPrice: 399000,
+    name: 'Đầm Gấm Cổ Yếm Hoa Uyển',
+    slug,
+    description:
+      'Đầm cổ yếm hoa uyển được chế tác từ sự kết hợp giữa gấm hoa văn sắc nét và tơ mềm mỏng xuyên thấu, tạo nên chiều sâu lớp lang tinh tế.',
+    price: 2800000,
+    originalPrice: undefined,
     images: [
-      'https://via.placeholder.com/500x600',
-      'https://via.placeholder.com/500x600',
-      'https://via.placeholder.com/500x600',
+      'https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=1300&q=80',
+      'https://images.unsplash.com/photo-1464863979621-258859e62245?auto=format&fit=crop&w=1300&q=80',
+      'https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?auto=format&fit=crop&w=1300&q=80',
+      'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=1300&q=80',
     ],
     sizes: [
-      { id: '1', label: 'XS', stock: 5 },
-      { id: '2', label: 'S', stock: 10 },
-      { id: '3', label: 'M', stock: 15 },
-      { id: '4', label: 'L', stock: 8 },
-      { id: '5', label: 'XL', stock: 3 },
-      { id: '6', label: 'XXL', stock: 0 },
+      { id: '1', label: 'L', stock: 0 },
+      { id: '2', label: 'M', stock: 0 },
+      { id: '3', label: 'S', stock: 0 },
     ],
     collections: ['collection-1'],
     featured: true,
-    rating: 4.5,
-    reviewCount: 120,
+    rating: undefined,
+    reviewCount: undefined,
   };
 
+  const sizeGuideText = 'Hướng dẫn chọn size';
+  const detailLines = [
+    '- Đầm dài: S=132, M=133.5, L=135',
+    '- Vòng ngực: 84.5 - 88.5 - 92.5',
+    '- Vòng eo: 66 - 70 - 74',
+  ];
+
   return (
-    <div className="max-w-7xl mx-auto px-4 py-12">
-      <div className="grid md:grid-cols-2 gap-12">
-        <div className="space-y-4">
-          {mockProduct.images.map((_, i) => (
-            <div
-              key={i}
-              className="bg-gray-300 aspect-square rounded-lg flex items-center justify-center"
+    <div className="bg-[#efefef] min-h-screen">
+      <div className="w-full px-8 md:px-12 py-8 md:py-10">
+        <div className="grid lg:grid-cols-[1.1fr_0.55fr] gap-6 md:gap-8 items-start">
+          <div className="grid grid-cols-2 gap-1.5 bg-white">
+            {mockProduct.images.map((image, index) => (
+              <div key={image} className="relative aspect-4/5 overflow-hidden bg-[#d9d9d9]">
+                <Image
+                  src={image}
+                  alt={`${mockProduct.name} ${index + 1}`}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 55vw"
+                  className="object-cover"
+                  loading={index === 0 ? 'eager' : 'lazy'}
+                />
+              </div>
+            ))}
+          </div>
+
+          <aside className="bg-[#efefef]">
+            <h1 className="font-serif text-[36px] leading-tight text-[#4a7444] mb-2">
+              {mockProduct.name}
+            </h1>
+
+            <p className="text-[42px] leading-none text-[#c16b2b] font-semibold mb-5">
+              {formatVnd(mockProduct.price)}
+            </p>
+
+            <div className="mb-5">
+              <p className="text-sm text-[#55604f] mb-2">Màu sắc: Hồng</p>
+              <div className="relative w-12 h-16 border border-[#c8c8c8] overflow-hidden">
+                <Image
+                  src={mockProduct.images[0]}
+                  alt="Màu sắc sản phẩm"
+                  fill
+                  sizes="48px"
+                  className="object-cover"
+                />
+              </div>
+            </div>
+
+            <div className="mb-5">
+              <div className="flex items-center justify-between mb-2">
+                <p className="text-sm text-[#55604f]">Kích thước:</p>
+                <button type="button" className="text-sm text-[#607960] underline">
+                  {sizeGuideText}
+                </button>
+              </div>
+
+              <div className="flex gap-2 mb-2">
+                {mockProduct.sizes.map((size) => (
+                  <span
+                    key={size.id}
+                    className="w-8 h-8 border border-[#d3d3d3] text-[#8c8c8c] text-xs flex items-center justify-center"
+                  >
+                    {size.label}
+                  </span>
+                ))}
+              </div>
+              <p className="text-sm text-[#607960] underline">Chi nhánh còn hàng</p>
+            </div>
+
+            <button
+              type="button"
+              className="w-full h-12 bg-[#4a7444] text-white text-lg hover:bg-[#40653c] transition-colors"
             >
-              <div className="w-full h-full bg-gradient-to-br from-gray-400 to-gray-500 rounded-lg" />
+              Tạm hết hàng
+            </button>
+
+            <div className="divide-y divide-[#d6d6d6] mt-4 border-y border-[#d6d6d6]">
+              <div className="py-3 flex items-center justify-between text-sm text-[#5c6654]">
+                <span>096 273 13 33</span>
+                <span>Hỗ trợ mua hàng 24/7</span>
+              </div>
+              <div className="py-3 flex items-center justify-between text-sm text-[#5c6654]">
+                <span>Chính sách đổi hàng</span>
+                <span>Tìm hiểu thêm</span>
+              </div>
             </div>
-          ))}
-        </div>
 
-        <div>
-          <h1 className="text-3xl font-bold mb-4">{mockProduct.name}</h1>
+            <div className="mt-7">
+              <div className="flex items-center justify-between text-[#55604f] mb-2">
+                <p className="text-base">Thông tin sản phẩm</p>
+                <span>⌃</span>
+              </div>
 
-          <div className="flex items-center gap-4 mb-6">
-            <div className="flex gap-1">
-              {[...Array(5)].map((_, i) => (
-                <span key={i} className="text-yellow-400">★</span>
-              ))}
+              <h2 className="font-serif text-[34px] leading-tight text-[#4a7444] mb-3">Thông tin sản phẩm</h2>
+
+              <div className="space-y-5 text-[#5f6a57]">
+                <div>
+                  <h3 className="text-sm font-semibold uppercase mb-2">Mô tả chi tiết:</h3>
+                  <p className="text-sm leading-7">{mockProduct.description}</p>
+                </div>
+
+                <div>
+                  <h3 className="text-sm font-semibold uppercase mb-2">Thông số:</h3>
+                  <ul className="space-y-1 text-sm">
+                    {detailLines.map((line) => (
+                      <li key={line}>{line}</li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div>
+                  <h3 className="text-sm font-semibold uppercase mb-2">Chất liệu:</h3>
+                  <p className="text-sm">Gấm hoa phối tơ mềm mỏng</p>
+                </div>
+              </div>
             </div>
-            <span className="text-sm text-gray-600">
-              ({mockProduct.reviewCount} đánh giá)
-            </span>
-          </div>
-
-          <div className="flex items-center gap-4 mb-8">
-            <span className="text-3xl font-bold">{mockProduct.price.toLocaleString('vi-VN')} VNĐ</span>
-            <span className="text-lg text-gray-400 line-through">
-              {mockProduct.originalPrice?.toLocaleString('vi-VN')} VNĐ
-            </span>
-          </div>
-
-          <p className="text-gray-600 mb-8">
-            {mockProduct.description}
-          </p>
-
-          <AddToCart product={mockProduct} />
-
-          <div className="mt-12 space-y-6 border-t pt-8">
-            <div>
-              <h3 className="font-semibold mb-2">Chất liệu</h3>
-              <p className="text-gray-600">Lụa tơ tằm 100%</p>
-            </div>
-            <div>
-              <h3 className="font-semibold mb-2">Chế độ bảo hành</h3>
-              <p className="text-gray-600">Bảo hành 12 tháng</p>
-            </div>
-            <div>
-              <h3 className="font-semibold mb-2">Vận chuyển</h3>
-              <p className="text-gray-600">Miễn phí vận chuyển cho đơn hàng trên 500.000 VNĐ</p>
-            </div>
-          </div>
+          </aside>
         </div>
       </div>
     </div>

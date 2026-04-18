@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Playfair_Display, Inter } from "next/font/google";
+import MainLayout from '@/components/layout/MainLayout';
 import "./globals.css";
 
 const inter = Inter({
@@ -25,7 +26,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Serene System - Áo dài truyền thống",
+  title: "Serene Shop - Áo dài truyền thống",
   description: "Khám phá bộ sưu tập áo dài đẹp với thiết kế hiện đại",
 };
 
@@ -37,9 +38,12 @@ export default function RootLayout({
   return (
     <html
       lang="vi"
+      data-scroll-behavior="smooth"
       className={`${inter.variable} ${playfairDisplay.variable} ${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body suppressHydrationWarning className="min-h-full flex flex-col">{children}</body>
+      <body suppressHydrationWarning className="min-h-full flex flex-col">
+        <MainLayout>{children}</MainLayout>
+      </body>
     </html>
   );
 }

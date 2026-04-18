@@ -1,156 +1,134 @@
 'use client';
 
 import Link from 'next/link';
-import { motion } from 'framer-motion';
+import { Facebook, Instagram, Mail, MapPin, Music2, Phone, Youtube } from 'lucide-react';
 
 export default function Footer() {
-  const footerLinks = [
-    {
-      title: 'Về chúng tôi',
-      links: [
-        { label: 'Câu chuyện Serene', href: '/#story' },
-        { label: 'Liên hệ', href: '/#contact' },
-        { label: 'Blog', href: '/blog' },
-      ],
-    },
-    {
-      title: 'Chính sách',
-      links: [
-        { label: 'Chính sách bảo mật', href: '/privacy' },
-        { label: 'Chính sách thanh toán', href: '/payment' },
-        { label: 'Chính sách vận chuyển', href: '/shipping' },
-      ],
-    },
-    {
-      title: 'Hỗ trợ',
-      links: [
-        { label: 'FAQ', href: '/faq' },
-        { label: 'Chính sách đổi trả', href: '/returns' },
-        { label: 'Liên hệ hỗ trợ', href: '/support' },
-      ],
-    },
+  const policyLinks = [
+    { label: 'Tìm kiếm', href: '/search' },
+    { label: 'Chính sách bảo mật', href: '/privacy' },
+    { label: 'Chính sách thanh toán', href: '/payment' },
+    { label: 'Chính sách vận chuyển', href: '/shipping' },
+    { label: 'Chính sách đổi hàng', href: '/returns' },
+    { label: 'Chính sách xử lý khiếu nại', href: '/complaint-policy' },
+    { label: 'Chính sách kiểm hàng', href: '/inspection-policy' },
+    { label: 'Hướng dẫn mua hàng', href: '/shopping-guide' },
   ];
 
   return (
-    <footer className="bg-accent-black text-white border-t border-neutral-light">
-      <div className="max-w-7xl mx-auto px-4 py-16">
-        {/* Main Footer Content */}
-        <div className="grid md:grid-cols-4 gap-12 mb-12">
-          {/* Brand */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            <h3 className="font-serif text-2xl font-normal mb-4">
-              Serene System
-            </h3>
-            <p className="font-sans text-sm text-white/70 leading-relaxed">
-              Áo dài truyền thống với thiết kế hiện đại, mang đến vẻ đẹp sang trọng cho phụ nữ Việt.
-            </p>
-          </motion.div>
-
-          {/* Footer Links */}
-          {footerLinks.map((section, i) => (
-            <motion.div
-              key={section.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: i * 0.1 }}
-              viewport={{ once: true }}
+    <footer className="bg-[#4a7444] text-[#f4f0dd] mt-0">
+      <div className="w-full px-5 md:px-10 py-8 md:py-10">
+        <div className="grid md:grid-cols-3 gap-7 md:gap-8">
+          <div>
+            <h3
+              className="inline-block font-serif text-4xl md:text-5xl leading-[1.15] tracking-wide mb-5 pb-1 bg-linear-to-r from-[#fff7d9] via-[#f4d991] to-[#fff7d9] bg-clip-text text-transparent drop-shadow-[0_1px_1px_rgba(0,0,0,0.25)]"
+              style={{
+                backgroundSize: '220% 100%',
+                animation: 'brandShimmer 5.5s ease-in-out infinite',
+              }}
             >
-              <h4 className="font-serif text-sm uppercase tracking-widest mb-4">
-                {section.title}
-              </h4>
-              <ul className="space-y-2">
-                {section.links.map((link) => (
-                  <li key={link.href}>
-                    <Link
-                      href={link.href}
-                      className="font-sans text-sm text-white/70 hover:text-accent-gold transition-colors duration-300"
-                    >
-                      {link.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </motion.div>
-          ))}
-        </div>
+              Bàng Trang
+            </h3>
 
-        {/* Divider */}
-        <div className="border-t border-white/20 py-8">
-          {/* Contact Info */}
-          <motion.div
-            className="grid md:grid-cols-2 gap-8 mb-8"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-          >
-            <div>
-              <p className="font-serif text-sm uppercase tracking-widest mb-2">
-                Liên hệ
+            <p className="text-xl md:text-2xl font-serif mb-3">Thông tin liên hệ</p>
+
+            <div className="space-y-2.5 text-sm md:text-base leading-relaxed text-[#f4f0dd]">
+              <p className="flex items-start gap-2.5">
+                <MapPin className="w-4 h-4 mt-1 shrink-0" />
+                <span>Bàng Trang Hà Nội:<br />103C2 Phạm Ngọc Thạch, Đống Đa, Hà Nội</span>
               </p>
-              <p className="font-sans text-sm text-white/70">
-                Điện thoại:{' '}
-                <a
-                  href="tel:0962731333"
-                  className="text-accent-gold hover:underline"
-                >
-                  096 273 13 33
-                </a>
+              <p className="pl-7">Bàng Trang Sài Gòn:<br />283 Lý Tự Trọng, Quận 1, Hồ Chí Minh</p>
+              <p className="flex items-center gap-2.5">
+                <Phone className="w-4 h-4 shrink-0" />
+                <span>Số điện thoại: 096 273 13 33</span>
               </p>
-              <p className="font-sans text-sm text-white/70">
-                Email:{' '}
-                <a
-                  href="mailto:support@serene-system.com"
-                  className="text-accent-gold hover:underline"
-                >
-                  support@serene-system.com
-                </a>
+              <p className="flex items-center gap-2.5">
+                <Mail className="w-4 h-4 shrink-0" />
+                <span>Email: support@bangtrang.vn</span>
               </p>
+              <p className="pl-7">Thời gian mở cửa: Thứ 2 đến Chủ Nhật từ 8h30 đến 22h</p>
             </div>
+          </div>
 
-            <div>
-              <p className="font-serif text-sm uppercase tracking-widest mb-2">
-                Theo dõi chúng tôi
-              </p>
-              <div className="flex gap-4">
-                {[
-                  { name: 'Facebook', href: 'https://facebook.com' },
-                  { name: 'Instagram', href: 'https://instagram.com' },
-                  { name: 'TikTok', href: 'https://tiktok.com' },
-                ].map((social) => (
-                  <a
-                    key={social.name}
-                    href={social.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="font-sans text-sm text-white/70 hover:text-accent-gold transition-colors duration-300"
+          <div>
+            <h3 className="text-xl md:text-2xl font-serif mb-3">Đăng ký Email</h3>
+
+            <form className="flex h-11 mb-6" onSubmit={(e) => e.preventDefault()}>
+              <input
+                type="email"
+                placeholder="Nhập địa chỉ email của bạn..."
+                className="flex-1 px-4 bg-white text-[#4a7444] placeholder:text-[#8d927c] outline-none text-sm"
+              />
+              <button
+                type="submit"
+                className="px-5 bg-[#d8d3b7] text-[#4a7444] hover:bg-[#e5dfc4] transition-colors text-sm"
+              >
+                Đăng ký
+              </button>
+            </form>
+
+            <div className="flex flex-wrap gap-2 text-sm md:text-[15px] leading-5">
+              {policyLinks.map((item) => (
+                <span key={item.href}>
+                  <Link
+                    href={item.href}
+                    className="inline-flex items-center px-3 py-1 rounded-full border border-white/30 bg-white/10 text-[#f8f2da] hover:bg-[#d8d3b7] hover:text-[#3f6243] transition-colors"
                   >
-                    {social.name}
-                  </a>
-                ))}
-              </div>
+                    {item.label}
+                  </Link>
+                </span>
+              ))}
             </div>
-          </motion.div>
+          </div>
 
-          {/* Copyright */}
-          <motion.div
-            className="border-t border-white/10 pt-8 text-center"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-          >
-            <p className="font-sans text-xs text-white/50">
-              &copy; {new Date().getFullYear()} Serene System. All rights reserved.
-            </p>
-            <p className="font-sans text-xs text-white/50 mt-2">
-              Design by Serene System Team
-            </p>
-          </motion.div>
+          <div>
+            <h3 className="text-xl md:text-2xl font-serif mb-3">Phương thức thanh toán</h3>
+            <div className="inline-flex items-center gap-2 bg-white/10 px-3 py-1.5 mb-5 rounded-md">
+              <span className="font-semibold text-sm text-[#35a1ff]">VNPay</span>
+              <span className="text-xs text-[#f4f0dd]">scan to pay</span>
+            </div>
+
+            <h3 className="text-xl md:text-2xl font-serif mb-3">Kết nối cùng Bàng Trang</h3>
+            <div className="flex items-center gap-2 mb-5">
+              <a href="https://facebook.com" target="_blank" rel="noreferrer" aria-label="Facebook" className="w-8 h-8 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center transition-colors">
+                <Facebook className="w-3.5 h-3.5" />
+              </a>
+              <a href="https://instagram.com" target="_blank" rel="noreferrer" aria-label="Instagram" className="w-8 h-8 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center transition-colors">
+                <Instagram className="w-3.5 h-3.5" />
+              </a>
+              <a href="https://tiktok.com" target="_blank" rel="noreferrer" aria-label="TikTok" className="w-8 h-8 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center transition-colors">
+                <Music2 className="w-3.5 h-3.5" />
+              </a>
+              <a href="https://youtube.com" target="_blank" rel="noreferrer" aria-label="YouTube" className="w-8 h-8 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center transition-colors">
+                <Youtube className="w-3.5 h-3.5" />
+              </a>
+            </div>
+
+            <div className="inline-flex items-center gap-2 bg-[#1f90d8] px-3 py-1.5 rounded-full text-xs md:text-sm font-semibold">
+              <span className="w-5 h-5 rounded-full bg-white/90 text-[#1f90d8] flex items-center justify-center">✓</span>
+              ĐÃ THÔNG BÁO BỘ CÔNG THƯƠNG
+            </div>
+          </div>
         </div>
       </div>
+
+      <div className="border-t border-[#d8d3b7]/60 py-3 text-center text-sm text-[#efe8cc]">
+        Copyrights © 2026 by Bàng Trang
+      </div>
+
+      <style jsx>{`
+        @keyframes brandShimmer {
+          0% {
+            background-position: 0% 50%;
+          }
+          50% {
+            background-position: 100% 50%;
+          }
+          100% {
+            background-position: 0% 50%;
+          }
+        }
+      `}</style>
     </footer>
   );
 }

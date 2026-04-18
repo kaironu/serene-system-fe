@@ -11,7 +11,7 @@ const tagVariants = {
   default: 'bg-secondary text-text-primary border border-neutral-light',
   accent: 'bg-accent-jade/10 text-accent-jade border border-accent-jade/30',
   gold: 'bg-accent-gold/10 text-accent-gold border border-accent-gold/30',
-  brick: 'bg-accent-brick/10 text-accent-brick border border-accent-brick/30',
+  brick: 'bg-accent-jade/10 text-accent-jade border border-accent-jade/30',
 };
 
 export function Tag({
