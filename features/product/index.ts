@@ -3,7 +3,7 @@ import { productAPI } from '@/lib/api';
 
 export async function getProductBySlug(slug: string): Promise<Product | null> {
   try {
-    return await productAPI.getBySlug(slug);
+    return (await productAPI.getBySlug(slug)) as Product | null;
   } catch (error) {
     return null;
   }
@@ -11,7 +11,7 @@ export async function getProductBySlug(slug: string): Promise<Product | null> {
 
 export async function getAllProducts(): Promise<Product[]> {
   try {
-    return await productAPI.getAll();
+    return (await productAPI.getAll()) as Product[];
   } catch (error) {
     return [];
   }
