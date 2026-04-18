@@ -1,3 +1,5 @@
+'use client';
+
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
@@ -5,7 +7,6 @@ import Hero from '@/components/layout/Hero';
 import Section from '@/components/layout/Section';
 import { Button } from '@/components/ui/Button';
 import ProductCard from '@/components/product/ProductCard';
-import { AnimatedDiv } from '@/lib/motion';
 
 const mockProducts = [
   {
