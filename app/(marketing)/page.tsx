@@ -182,16 +182,19 @@ const AboutSection = () => (
 
       <div className="relative mt-8 border border-[#c8dcb8]/80 px-5 py-6 text-lg leading-relaxed sm:px-6 sm:py-8 sm:text-xl md:px-8 md:py-10 md:text-2xl">
         <p className="text-[#f7f3e4]">
-          Băng Trang không bắt đầu từ một nơi chốn, mà bắt đầu từ một cảm giác - khi tụi mình nhận ra rằng, có những ngày người phụ nữ chỉ cần một
-          điều rất nhỏ: được mặc đẹp và thấy mình dịu dàng hơn.
+          Băng Trang bắt đầu từ những suy nghĩ rất giản đơn mong muốn kinh doanh thời trang và mang đến cho phụ nữ những bộ trang phục đẹp.
         </p>
         <p className="mt-8 text-[#f7f3e4]">
-          Từ đó, từng tà áo dài được tạo nên một cách chậm rãi. Không vội vàng, không phô trương, chỉ là sự chăm chút trong từng đường kim mũi chỉ,
-          để mỗi lần khoác lên, bạn cảm nhận được sự nhẹ nhàng, mềm mại và gần gũi.
+          Nhưng khi tìm hiểu sâu hơn về các làng nghề truyền thống và vẻ đẹp của người phụ nữ Việt, Băng Trang dần dành một tình yêu đặc biệt cho
+          những giá trị ấy. Từ đó, Băng Trang mong muốn trân trọng và đưa vẻ đẹp của di sản truyền thống đi xa hơn qua từng thiết kế.
         </p>
         <p className="mt-8 text-[#f7f3e4]">
-          Với Băng Trang, áo dài không phải để chờ dịp đặc biệt. Mà là để bạn có thể mặc vào bất kỳ ngày nào - khi bạn muốn yêu thương chính mình
-          nhiều hơn một chút.
+          Không vội vàng, không phô trương chỉ là sự chăm chút trong từng đường kim mũi chỉ. Để mỗi khi khoác lên mình, người mặc có thể cảm nhận
+          được sự mềm mại gần gũi của lụa tơ tằm làng nghề Việt và nét dịu dàng trong từng thước lụa.
+        </p>
+        <p className="mt-8 text-[#f7f3e4]">
+          Với Băng Trang, mỗi thiết kế từ tơ tằm không chỉ đơn thuần là thời trang hay cái đẹp, mà còn là sự chạm đến những giá trị truyền thống
+          được gìn giữ và nâng niu.
         </p>
       </div>
     </div>
