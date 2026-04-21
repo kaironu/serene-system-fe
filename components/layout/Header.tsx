@@ -19,9 +19,13 @@ export default function Header() {
 
   return (
     <header className="bg-[#ebe9d2] border-b border-[#d9d6bf] sticky top-0 z-40">
-      <div className="w-full h-20 px-8 md:px-10 grid grid-cols-[300px_1fr_150px] items-center gap-4">
-        <Link href="/" className="font-serif text-5xl leading-none whitespace-nowrap text-[#4f744f] tracking-tight">
-          Bàng Trang
+      <div className="w-full h-24 px-8 md:px-10 grid grid-cols-[360px_1fr_150px] items-center gap-4">
+        <Link href="/" className="flex items-center h-20 w-full max-w-80">
+          <img
+            src="/images/Logo.png"
+            alt="Logo Bàng Trang"
+            className="h-full w-full object-contain"
+          />
         </Link>
 
         <nav className="hidden md:flex items-center justify-center gap-10 text-[15px] uppercase tracking-[0.16em] text-[#6d735f]">

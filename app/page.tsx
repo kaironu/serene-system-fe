@@ -174,6 +174,30 @@ const ProductHighlights = () => (
   </section>
 );
 
+const AboutSection = () => (
+  <section id="ve-chung-toi" className="bg-[#3fa996] px-5 py-14 md:px-10 md:py-18">
+    <div className="mx-auto w-full max-w-4xl text-[#d5f2e9]">
+      <h2 className="text-center font-serif text-4xl uppercase tracking-[0.05em] text-white md:text-6xl">Băng Trang - Tơ Tằm Làng Việt</h2>
+      <div className="mx-auto mt-5 h-px w-48 bg-[#b9efe1]/80" />
+
+      <div className="relative mt-8 border border-[#b9efe1] px-6 py-8 text-[22px] leading-relaxed md:px-8 md:py-10 md:text-[36px]">
+        <p>
+          Băng Trang không bắt đầu từ một nơi chốn, mà bắt đầu từ một cảm giác - khi tụi mình nhận ra rằng, có những ngày người phụ nữ chỉ cần một
+          điều rất nhỏ: được mặc đẹp và thấy mình dịu dàng hơn.
+        </p>
+        <p className="mt-8">
+          Từ đó, từng tà áo dài được tạo nên một cách chậm rãi. Không vội vàng, không phô trương, chỉ là sự chăm chút trong từng đường kim mũi chỉ,
+          để mỗi lần khoác lên, bạn cảm nhận được sự nhẹ nhàng, mềm mại và gần gũi.
+        </p>
+        <p className="mt-8">
+          Với Băng Trang, áo dài không phải để chờ dịp đặc biệt. Mà là để bạn có thể mặc vào bất kỳ ngày nào - khi bạn muốn yêu thương chính mình
+          nhiều hơn một chút.
+        </p>
+      </div>
+    </div>
+  </section>
+);
+
 const EditorialSection = ({
   section,
   reverse,
@@ -233,6 +257,7 @@ export default function Homepage() {
   return (
     <div className="space-y-0">
       <HeroSplit />
+      <AboutSection />
       <ProductHighlights />
       {editorialSections.map((section, index) => (
         <EditorialSection
