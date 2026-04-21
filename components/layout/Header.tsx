@@ -34,7 +34,10 @@ export default function Header() {
           <img
             src="/images/logo1.png"
             alt="Logo Băng Trang"
-            className="h-full w-full origin-left scale-[2.8] object-contain object-left mix-blend-screen brightness-125 contrast-125 saturate-75 md:scale-[2.4]"
+            className="h-full w-full origin-left scale-[2.8] object-contain object-left md:scale-[2.4]"
+            style={{
+              filter: 'brightness(0) saturate(100%) invert(89%) sepia(24%) saturate(525%) hue-rotate(349deg) brightness(102%) contrast(92%)',
+            }}
           />
         </Link>
 
