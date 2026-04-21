@@ -20,7 +20,17 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-40 border-b border-[#c8dcb8]/50 bg-[#0b4f40]">
       <div className="grid h-20 w-full grid-cols-[1fr_auto] items-center gap-3 px-2 sm:px-4 md:h-24 md:grid-cols-[360px_1fr_150px] md:px-10">
-        <Link href="/" className="flex h-14 w-36 items-center justify-self-start overflow-visible sm:h-16 sm:w-40 md:h-18 md:w-full md:max-w-72">
+        <Link
+          href="/"
+          onClick={(event) => {
+            if (isHome) {
+              event.preventDefault();
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+              setIsOpen(false);
+            }
+          }}
+          className="flex h-14 w-36 items-center justify-self-start overflow-visible sm:h-16 sm:w-40 md:h-18 md:w-full md:max-w-72"
+        >
           <img
             src="/images/logo1.png"
             alt="Logo Băng Trang"
