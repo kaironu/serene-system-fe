@@ -19,12 +19,12 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 z-40 border-b border-[#c8dcb8]/50 bg-[#0b4f40]">
-      <div className="grid h-20 w-full grid-cols-[1fr_auto] items-center gap-3 px-4 sm:px-6 md:h-24 md:grid-cols-[360px_1fr_150px] md:px-10">
-        <Link href="/" className="flex h-12 w-full max-w-44 items-center sm:h-14 sm:max-w-52 md:h-20 md:max-w-80">
+      <div className="grid h-20 w-full grid-cols-[1fr_auto] items-center gap-3 px-2 sm:px-4 md:h-24 md:grid-cols-[360px_1fr_150px] md:px-10">
+        <Link href="/" className="flex h-12 w-24 items-center justify-self-start sm:h-14 sm:w-28 md:h-20 md:w-full md:max-w-80">
           <img
             src="/images/Logo.png"
             alt="Logo Băng Trang"
-            className="h-full w-full object-contain"
+            className="h-full w-full object-contain object-left"
           />
         </Link>
 
