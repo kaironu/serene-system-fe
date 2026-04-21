@@ -16,7 +16,7 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="bg-[#4a7444] text-[#f4f0dd] mt-0">
+    <footer className="bg-[#0b4f40] text-[#f4f0dd] mt-0">
       <div className="w-full px-5 md:px-10 py-8 md:py-10">
         <div className="grid md:grid-cols-3 gap-7 md:gap-8">
           <div>
@@ -27,26 +27,26 @@ export default function Footer() {
                 animation: 'brandShimmer 5.5s ease-in-out infinite',
               }}
             >
-              Bàng Trang
+              Băng Trang
             </h3>
 
-            <p className="text-xl md:text-2xl font-serif mb-3">Thông tin liên hệ</p>
+            <p className="mb-3 font-serif text-xl text-[#fff8df] md:text-2xl">Thông tin liên hệ</p>
 
-            <div className="space-y-2.5 text-sm md:text-base leading-relaxed text-[#f4f0dd]">
+            <div className="space-y-2.5 text-sm md:text-base leading-relaxed text-[#fff8e8] [&_p]:text-[#fff8e8] [&_span]:text-[#fff8e8] [&_svg]:text-[#d8d3b7]">
               <p className="flex items-start gap-2.5">
                 <MapPin className="w-4 h-4 mt-1 shrink-0" />
-                <span>Bàng Trang Hà Nội:<br />103C2 Phạm Ngọc Thạch, Đống Đa, Hà Nội</span>
+                <span className="font-medium">Băng Trang Hà Nội:<br />103C2 Phạm Ngọc Thạch, Đống Đa, Hà Nội</span>
               </p>
-              <p className="pl-7">Bàng Trang Sài Gòn:<br />283 Lý Tự Trọng, Quận 1, Hồ Chí Minh</p>
+              <p className="pl-7 font-medium">Băng Trang Sài Gòn:<br />283 Lý Tự Trọng, Quận 1, Hồ Chí Minh</p>
               <p className="flex items-center gap-2.5">
                 <Phone className="w-4 h-4 shrink-0" />
-                <span>Số điện thoại: 096 273 13 33</span>
+                <span className="font-medium">Số điện thoại: 096 273 13 33</span>
               </p>
               <p className="flex items-center gap-2.5">
                 <Mail className="w-4 h-4 shrink-0" />
-                <span>Email: support@bangtrang.vn</span>
+                <span className="font-medium">Email: support@bangtrang.vn</span>
               </p>
-              <p className="pl-7">Thời gian mở cửa: Thứ 2 đến Chủ Nhật từ 8h30 đến 22h</p>
+              <p className="pl-7 font-medium">Thời gian mở cửa: Thứ 2 đến Chủ Nhật từ 8h30 đến 22h</p>
             </div>
           </div>
 
@@ -57,11 +57,11 @@ export default function Footer() {
               <input
                 type="email"
                 placeholder="Nhập địa chỉ email của bạn..."
-                className="flex-1 px-4 bg-white text-[#4a7444] placeholder:text-[#8d927c] outline-none text-sm"
+                className="flex-1 px-4 bg-white text-[#0b4f40] placeholder:text-[#7f8c86] outline-none text-sm"
               />
               <button
                 type="submit"
-                className="px-5 bg-[#d8d3b7] text-[#4a7444] hover:bg-[#e5dfc4] transition-colors text-sm"
+                className="px-5 bg-[#d8d3b7] text-[#0b4f40] hover:bg-[#e5dfc4] transition-colors text-sm"
               >
                 Đăng ký
               </button>
@@ -72,7 +72,7 @@ export default function Footer() {
                 <span key={item.href}>
                   <Link
                     href={item.href}
-                    className="inline-flex items-center px-3 py-1 rounded-full border border-white/30 bg-white/10 text-[#f8f2da] hover:bg-[#d8d3b7] hover:text-[#3f6243] transition-colors"
+                    className="inline-flex items-center px-3 py-1 rounded-full border border-white/30 bg-white/10 text-[#f8f2da] hover:bg-[#d8d3b7] hover:text-[#0b4f40] transition-colors"
                   >
                     {item.label}
                   </Link>
@@ -88,7 +88,7 @@ export default function Footer() {
               <span className="text-xs text-[#f4f0dd]">scan to pay</span>
             </div>
 
-            <h3 className="text-xl md:text-2xl font-serif mb-3">Kết nối cùng Bàng Trang</h3>
+            <h3 className="text-xl md:text-2xl font-serif mb-3">Kết nối cùng Băng Trang</h3>
             <div className="flex items-center gap-2 mb-5">
               <a href="https://facebook.com" target="_blank" rel="noreferrer" aria-label="Facebook" className="w-8 h-8 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center transition-colors">
                 <Facebook className="w-3.5 h-3.5" />
@@ -113,7 +113,7 @@ export default function Footer() {
       </div>
 
       <div className="border-t border-[#d8d3b7]/60 py-3 text-center text-sm text-[#efe8cc]">
-        Copyrights © 2026 by Bàng Trang
+        Copyrights © 2026 by Băng Trang
       </div>
 
       <style jsx>{`
