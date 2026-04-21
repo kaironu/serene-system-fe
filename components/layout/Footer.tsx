@@ -30,23 +30,22 @@ export default function Footer() {
               Băng Trang
             </h3>
 
-            <p className="mb-3 font-serif text-xl text-[#fff8df] md:text-2xl">Thông tin liên hệ</p>
+            <p className="mb-3 font-serif text-xl text-[#fff8df] md:text-2xl">Băng Trang - Sài Gòn</p>
 
-            <div className="space-y-2.5 text-sm md:text-base leading-relaxed text-[#fff8e8] [&_p]:text-[#fff8e8] [&_span]:text-[#fff8e8] [&_svg]:text-[#d8d3b7]">
-              <p className="flex items-start gap-2.5">
-                <MapPin className="w-4 h-4 mt-1 shrink-0" />
-                <span className="font-medium">Băng Trang Hà Nội:<br />103C2 Phạm Ngọc Thạch, Đống Đa, Hà Nội</span>
+            <div className="space-y-3 text-sm md:text-base leading-relaxed text-[#fff8e8] [&_p]:text-[#fff8e8] [&_span]:text-[#fff8e8] [&_svg]:text-[#d8d3b7]">
+              <p className="font-medium">
+                Hiện tại Băng Trang hoạt động chủ yếu trên nền tảng online. Trong thời gian tới, Băng Trang mong muốn mang đến một không gian riêng -
+                nơi các nàng có thể trực tiếp trải nghiệm các thiết kế và được chăm sóc tận tình hơn.
               </p>
-              <p className="pl-7 font-medium">Băng Trang Sài Gòn:<br />283 Lý Tự Trọng, Quận 1, Hồ Chí Minh</p>
               <p className="flex items-center gap-2.5">
                 <Phone className="w-4 h-4 shrink-0" />
-                <span className="font-medium">Số điện thoại: 096 273 13 33</span>
+                <span className="font-medium">Hotline: 0336 008 778</span>
               </p>
               <p className="flex items-center gap-2.5">
                 <Mail className="w-4 h-4 shrink-0" />
-                <span className="font-medium">Email: support@bangtrang.vn</span>
+                <span className="font-medium">Email: maisonbangtrang@gmail.com</span>
               </p>
-              <p className="pl-7 font-medium">Thời gian mở cửa: Thứ 2 đến Chủ Nhật từ 8h30 đến 22h</p>
+              <p className="font-medium">Thời gian hoạt động 8:00 - 22:00 - Hằng ngày</p>
             </div>
           </div>
 
